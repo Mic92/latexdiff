@@ -1721,7 +1721,7 @@ sub flatten {
             print STDERR "Include file $fname\n" if $verbose;
             print STDERR "DEBUG looking for file ",$fullfile, "\n" if $debug;
             # content of file becomes replacement value (use recursion), add \newpage if the command was include
-            if ( -f $fullfile ) {
+            if ( -f $fullfile && $fname ne "revisions.tex") {
 	      # If file exists, replace input or include command with expanded input
 	      $replacement=flatten(read_file_with_encoding($fullfile, $encoding), $preamble,$filename,$encoding) or die "Could not open file ",$fullfile,": $!";
 	      $replacement = remove_endinput($replacement); 
