@@ -1737,16 +1737,16 @@ sub flatten {
           }/exgm;
 
   # replace bibliography with bbl file if it exists
-  $text=~s/(^(?:[^%\n]|\\%)*)\\bibliography\{(.*?)\}/{ 
-           if ( -f $bblfile ){
-	     $replacement=read_file_with_encoding(File::Spec->catfile($bblfile), $encoding);
-	   } else {
-	     warn "Bibliography file $bblfile cannot be found. No flattening of \\bibliography done. Run bibtex on old and new files first";
-	     $replacement="\\bibliography{$2}";
-	   }
-	   $begline=(defined($1)? $1 : "") ;
-	   "$begline$replacement";
-  }/exgm;
+  #$text=~s/(^(?:[^%\n]|\\%)*)\\bibliography\{(.*?)\}/{
+  #         if ( -f $bblfile ){
+	#     $replacement=read_file_with_encoding(File::Spec->catfile($bblfile), $encoding);
+	#   } else {
+	#     warn "Bibliography file $bblfile cannot be found. No flattening of \\bibliography done. Run bibtex on old and new files first";
+	#     $replacement="\\bibliography{$2}";
+	#   }
+	#   $begline=(defined($1)? $1 : "") ;
+	#   "$begline$replacement";
+  #}/exgm;
 
   # replace subfile with contents (subfile package)
   $text=~s/(^(?:[^%\n]|\\%)*)\\subfile\{(.*?)\}/{ 
